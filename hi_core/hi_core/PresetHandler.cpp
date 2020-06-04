@@ -989,9 +989,13 @@ juce::File ProjectHandler::getAppDataDirectory()
 	File f = File::getSpecialLocation(File::SpecialLocationType::userHomeDirectory).getChildFile(".hise/");
 #endif
 
-	if (!f.isDirectory()) f.createDirectory();
+#if WAM
+    return "/";
+#else
+   if (!f.isDirectory()) f.createDirectory();
 
-	return f.getFullPathName();
+   return f.getFullPathName();
+#endif
 }
 
 juce::String FrontendHandler::checkSampleReferences(MainController* mc, bool returnTrueIfOneSampleFound)

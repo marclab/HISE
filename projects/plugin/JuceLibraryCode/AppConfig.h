@@ -107,7 +107,7 @@
 #endif
 
 #ifndef    USE_IPP
- #define   USE_IPP 1
+ #define   USE_IPP 0
 #endif
 
 #ifndef    USE_VDSP_FFT
@@ -116,6 +116,10 @@
 
 #ifndef    FRONTEND_IS_PLUGIN
  //#define FRONTEND_IS_PLUGIN 0
+#endif
+
+#ifndef    HISE_MIDIFX_PLUGIN
+ //#define HISE_MIDIFX_PLUGIN 0
 #endif
 
 #ifndef    USE_CUSTOM_FRONTEND_TOOLBAR
@@ -162,6 +166,10 @@
  #define   ENABLE_SCRIPTING_BREAKPOINTS 1
 #endif
 
+#ifndef    HISE_ENABLE_MIDI_INPUT_FOR_FX
+ //#define HISE_ENABLE_MIDI_INPUT_FOR_FX 0
+#endif
+
 #ifndef    ENABLE_ALL_PEAK_METERS
  #define   ENABLE_ALL_PEAK_METERS 1
 #endif
@@ -178,6 +186,10 @@
  //#define ENABLE_STARTUP_LOGGER 0
 #endif
 
+#ifndef    HISE_MAX_PROCESSING_BLOCKSIZE
+ //#define HISE_MAX_PROCESSING_BLOCKSIZE 1
+#endif
+
 #ifndef    ENABLE_CPU_MEASUREMENT
  #define   ENABLE_CPU_MEASUREMENT 1
 #endif
@@ -188,6 +200,14 @@
 
 #ifndef    USE_SPLASH_SCREEN
  //#define USE_SPLASH_SCREEN 0
+#endif
+
+#ifndef    HISE_SAMPLE_DIALOG_SHOW_INSTALL_BUTTON
+ //#define HISE_SAMPLE_DIALOG_SHOW_INSTALL_BUTTON 1
+#endif
+
+#ifndef    HISE_SAMPLE_DIALOG_SHOW_LOCATE_BUTTON
+ //#define HISE_SAMPLE_DIALOG_SHOW_LOCATE_BUTTON 1
 #endif
 
 //==============================================================================
@@ -225,6 +245,20 @@
 
 #ifndef    HI_ENABLE_CUSTOM_NODE_LOCATION
  //#define HI_ENABLE_CUSTOM_NODE_LOCATION 0
+#endif
+
+//==============================================================================
+// hi_scripting flags:
+
+#ifndef    INCLUDE_BIG_SCRIPTNODE_OBJECT_COMPILATION
+ //#define INCLUDE_BIG_SCRIPTNODE_OBJECT_COMPILATION 1
+#endif
+
+//==============================================================================
+// hi_snex flags:
+
+#ifndef    HISE_INCLUDE_SNEX
+ //#define HISE_INCLUDE_SNEX 0
 #endif
 
 //==============================================================================
@@ -454,6 +488,10 @@
 
 #ifndef    JUCE_ENABLE_REPAINT_DEBUGGING
  //#define JUCE_ENABLE_REPAINT_DEBUGGING 0
+#endif
+
+#ifndef    JUCE_ENABLE_REPAINT_PROFILING
+ //#define JUCE_ENABLE_REPAINT_PROFILING 1
 #endif
 
 #ifndef    JUCE_USE_XRANDR

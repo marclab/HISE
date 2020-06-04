@@ -200,6 +200,8 @@ public:
 		/** Loads a font file. This is deprecated, because it might result in different names on various OS. Use loadFontAs() instead. */
 		void loadFont(const String &fileName);
 
+        void setMacroControlLearnMode(int index);
+
 		/** Loads the font from the given file in the image folder and registers it under the fontId. This is platform agnostic. */
 		void loadFontAs(String fileName, String fontId);
 

@@ -937,6 +937,7 @@ struct ScriptingApi::Engine::Wrapper
 	API_METHOD_WRAPPER_0(Engine, getUptime);
 	API_METHOD_WRAPPER_0(Engine, getHostBpm);
 	API_VOID_METHOD_WRAPPER_1(Engine, setHostBpm);
+	API_VOID_METHOD_WRAPPER_1(Engine, setMacroControlLearnMode);
 	API_METHOD_WRAPPER_0(Engine, getCpuUsage);
 	API_METHOD_WRAPPER_0(Engine, getNumVoices);
 	API_METHOD_WRAPPER_0(Engine, getMemoryUsage);
@@ -1031,6 +1032,7 @@ parentMidiProcessor(dynamic_cast<ScriptBaseMidiProcessor*>(p))
 	ADD_API_METHOD_0(getUptime);
 	ADD_API_METHOD_0(getHostBpm);
 	ADD_API_METHOD_1(setHostBpm);
+	ADD_API_METHOD_1(setMacroControlLearnMode);
 	ADD_API_METHOD_0(getCpuUsage);
 	ADD_API_METHOD_0(getNumVoices);
 	ADD_API_METHOD_0(getMemoryUsage);
@@ -1121,6 +1123,12 @@ parentMidiProcessor(dynamic_cast<ScriptBaseMidiProcessor*>(p))
 void ScriptingApi::Engine::allNotesOff()
 {
 	getProcessor()->getMainController()->allNotesOff();
+};
+
+void ScriptingApi::Engine::setMacroControlLearnMode(int index)
+{
+
+	getScriptProcessor()->getMainController_()->getMacroManager().setMacroControlLearnMode(getScriptProcessor()->getMainController_()->getMainSynthChain(), index);
 };
 
 void ScriptingApi::Engine::addModuleStateToUserPreset(var moduleId)
