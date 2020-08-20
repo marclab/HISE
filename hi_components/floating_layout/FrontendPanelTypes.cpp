@@ -122,7 +122,7 @@ void ActivityLedPanel::paint(Graphics &g)
 		g.drawImageWithin(*img, showMidiLabel ? 38 : 2, 2, 24, getHeight(), RectanglePlacement::centred);
 	}
 
-	
+
 }
 
 void ActivityLedPanel::setOn(bool shouldBeOn)
@@ -269,7 +269,7 @@ void MidiKeyboardPanel::restoreInternal(const var& object)
 		keyboard->asComponent()->setColour(hise::MPEKeyboard::ColourIds::waveColour, findPanelColour(PanelColourId::itemColour1));
 		keyboard->asComponent()->setColour(hise::MPEKeyboard::ColourIds::keyOnColour, findPanelColour(PanelColourId::itemColour2));
 		keyboard->asComponent()->setColour(hise::MPEKeyboard::ColourIds::dragColour, findPanelColour(PanelColourId::itemColour3));
-		
+
 		if(keyboard->isMPEKeyboard())
 			dynamic_cast<hise::MPEKeyboard*>(keyboard.get())->setChannelRange(mpeZone);
 	}
@@ -305,7 +305,7 @@ Identifier MidiKeyboardPanel::getDefaultablePropertyId(int index) const
 	RETURN_DEFAULT_PROPERTY_ID(index, SpecialPanelIds::MPEEndChannel, "MPEEndChannel");
 	RETURN_DEFAULT_PROPERTY_ID(index, SpecialPanelIds::UseVectorGraphics, "UseVectorGraphics");
 	RETURN_DEFAULT_PROPERTY_ID(index, SpecialPanelIds::UseFlatStyle, "UseFlatStyle");
-	
+
 	jassertfalse;
 	return{};
 }
@@ -551,7 +551,7 @@ PresetBrowserPanel::PresetBrowserPanel(FloatingTile* parent) :
 	setDefaultPanelColour(PanelColourId::itemColour1, Colour(SIGNAL_COLOUR));
 
 	addAndMakeVisible(presetBrowser = new PresetBrowser(getMainController()));
-	
+
 	if (parent->getMainController()->getCurrentScriptLookAndFeel() != nullptr)
 	{
 		scriptlaf = HiseColourScheme::createAlertWindowLookAndFeel(parent->getMainController());
@@ -599,13 +599,13 @@ void PresetBrowserPanel::fromDynamicObject(const var& object)
 		options.columnWidthRatios.clear();
 		options.columnWidthRatios.addArray(*ratios.getArray());
 	}
-	
+
 	options.showFavoriteIcons = getPropertyWithDefault(object, SpecialPanelIds::ShowFavoriteIcon);
 	options.backgroundColour = findPanelColour(PanelColourId::bgColour);
 	options.highlightColour = findPanelColour(PanelColourId::itemColour1);
 	options.textColour = findPanelColour(PanelColourId::textColour);
 	options.font = getFont();
-	
+
 	presetBrowser->setOptions(options);
 }
 
@@ -700,7 +700,7 @@ void AboutPagePanel::fromDynamicObject(const var& object)
 	showProductName = getPropertyWithDefault(object, ShowProductName);
 
 	useCustomImage = getPropertyWithDefault(object, UseCustomImage);
-	
+
 
 	rebuildText();
 }
@@ -771,7 +771,7 @@ void AboutPagePanel::rebuildText()
 		auto& handler = getMainController()->getExpansionHandler();
 		bgImage = handler.loadImageReference(PoolReference(getMainController(), "{PROJECT_FOLDER}about.png", ProjectHandler::SubDirectories::Images));
 	}
-	
+
 
 #if USE_FRONTEND
 	const String projectName = FrontendHandler::getProjectName();
@@ -781,7 +781,7 @@ void AboutPagePanel::rebuildText()
 #endif
 
 	const String version = FrontendHandler::getVersionString();
-	
+
 #else
 	const auto& data = dynamic_cast<GlobalSettingManager*>(getMainController())->getSettingsObject();
 
@@ -820,7 +820,7 @@ void AboutPagePanel::rebuildText()
 		text.append(licencee + nl, normal, low);
 	}
 #endif
-	
+
 	text.append(nl + "Built with HISE Version ", bold, low);
 	text.append(hiseVersion + nl, bold, low);
 
@@ -839,7 +839,7 @@ void AboutPagePanel::rebuildText()
 	{
 		text.append(showWebsiteURL + nl, bold, low);
 	}
-	
+
 }
 
 FrontendMacroPanel::FrontendMacroPanel(FloatingTile* parent) :
@@ -1098,7 +1098,7 @@ TableFloatingTileBase::InvertedButton::InvertedButton(TableFloatingTileBase &own
 	t->addListener(this);
 	t->setTooltip("Invert the range of the macro control for this parameter.");
 	t->setColour(TextButton::buttonColourId, Colour(0x88000000));
-	t->setColour(TextButton::buttonOnColourId, Colour(0x88FFFFFF));
+	t->setColour(TextButton::buttonOnColourId, Colour(0x88000000));
 	t->setColour(TextButton::textColourOnId, Colour(0xaa000000));
 	t->setColour(TextButton::textColourOffId, Colour(0x99ffffff));
 
@@ -1115,12 +1115,12 @@ void TableFloatingTileBase::InvertedButton::setRowAndColumn(const int newRow, bo
 	row = newRow;
 
 	t->setToggleState(value, dontSendNotification);
-	t->setButtonText(value ? "Inverted" : "Normal");
+	t->setButtonText(value ? "On" : "Off");
 }
 
 void TableFloatingTileBase::InvertedButton::buttonClicked(Button *b)
 {
-	t->setButtonText(b->getToggleState() ? "Inverted" : "Normal");
+	t->setButtonText(b->getToggleState() ? "On" : "Off");
 	owner.setInverted(row, b->getToggleState());
 }
 
