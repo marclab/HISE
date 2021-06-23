@@ -414,9 +414,9 @@ juce::String PresetBrowser::ModalWindow::getCommand() const
 	case PresetBrowser::ModalWindow::Action::Add:
 		return "Enter the name";
 	case PresetBrowser::ModalWindow::Action::Delete:
-		return "Are you sure you want to delete the file " + le.newFile.getFileNameWithoutExtension() + "?";
+		return "Are you sure you want to delete the current preset " + le.newFile.getFileNameWithoutExtension() + "?";
 	case PresetBrowser::ModalWindow::Action::Replace:
-		return "Are you sure you want to replace the file " + le.newFile.getFileNameWithoutExtension() + "?";
+		return "Do you want to overwrite the current preset " + le.newFile.getFileNameWithoutExtension() + "?";
 	case PresetBrowser::ModalWindow::Action::numActions:
 		break;
 	default:
