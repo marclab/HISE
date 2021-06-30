@@ -910,6 +910,9 @@ void PresetBrowser::resized()
 
 	if (showOnlyPresets)
 	{
+		if (expansionColumn != nullptr)
+			listArea.removeFromLeft(expansionColumn->getWidth() + 4);
+		
 		presetColumn->setBounds(listArea);
 	}
 	else
